@@ -1,5 +1,5 @@
 # Используем официальный образ Maven для сборки приложения
-FROM maven:3.8.5-openjdk-17 AS build
+FROM maven:3.8.5-openjdk-11 AS build
 
 # Указываем рабочую директорию внутри контейнера
 WORKDIR /app
@@ -15,7 +15,7 @@ COPY src ./src
 RUN mvn clean package -DskipTests
 
 # Используем официальный образ OpenJDK для запуска приложения
-FROM openjdk:17-jdk-slim
+FROM openjdk:11-jdk-slim
 
 # Указываем рабочую директорию для финального образа
 WORKDIR /app
