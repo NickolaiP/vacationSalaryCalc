@@ -21,10 +21,10 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Копируем JAR файл из предыдущего этапа сборки
-COPY --from=build /app/target/vacation-calculator-0.0.1-SNAPSHOT.jar ./vacation-calculator.jar
+COPY --from=build /app/target/*.jar ./app.jar
 
 # Указываем команду для запуска приложения
-ENTRYPOINT ["java", "-jar", "vacation-calculator.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
 
 # Указываем, на каком порту приложение будет работать
 EXPOSE 8080
